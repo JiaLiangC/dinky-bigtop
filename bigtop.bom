@@ -381,5 +381,19 @@ bigtop {
       packaging = 'rpm'
     }
 */
+    'dinky' {
+      name    = 'dinky'
+      rpm_pkg_suffix = "_" + bigtop.base_version.replace(".", "_")
+      relNotes = 'Dinky'
+      version { base = '1.0.0'; pkg = base-"-release"; release = 1 }
+      tarball {
+                source  = "$name-${version.base}.tar.gz"
+                destination = source
+               }
+      url     { download_path = "$name/${version.base}"
+                site = "https://github.com/DataLinkDC/dinky/archive/refs/tags"
+                archive = site
+               }
+    }
   }
 }
